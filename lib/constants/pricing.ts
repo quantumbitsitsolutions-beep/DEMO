@@ -1,0 +1,93 @@
+export const PRICING_PLANS = [
+  {
+    name: "AI Chatbot Only",
+    pages: "Add-on",
+    price: "$499",
+    description: "Perfect for existing websites needing AI customer support",
+    features: [
+      "Custom AI Chatbot Integration",
+      "24/7 Customer Support Automation",
+      "Multi-language Support",
+      "Integration with Existing Website",
+      "Lead Qualification & Routing",
+      "Analytics Dashboard",
+      "1 Month Dedicated Support",
+      "2 Weeks Delivery",
+    ],
+    cta: "Get Started",
+  },
+  {
+    name: "3-Page Website",
+    pages: "3",
+    price: "$999",
+    description: "Perfect for service-based businesses just getting started",
+    features: [
+      "3 Custom Pages (Home, Services, Contact)",
+      "AI-Powered Lead Capture Form",
+      "Mobile Responsive Design",
+      "Basic SEO Optimization",
+      "Email Integration",
+      "1 Round of Revisions",
+      "2 Weeks Delivery",
+    ],
+    cta: "Get Started",
+  },
+  {
+    name: "4-7 Page Website",
+    pages: "4-7",
+    price: "$1,999",
+    description: "Ideal for growing businesses with multiple services",
+    features: [
+      "4-7 Custom Pages (Home, Services, About, Blog, Portfolio, etc.)",
+      "Advanced AI Chatbot Integration",
+      "Automated Lead Scoring",
+      "Blog Section with SEO",
+      "Portfolio/Case Studies Showcase",
+      "Email & WhatsApp Integration",
+      "2 Rounds of Revisions",
+      "Ongoing Support (1 Month)",
+      "3 Weeks Delivery",
+    ],
+    cta: "Get Started",
+    highlighted: true,
+  },
+  {
+    name: "7-12 Page Website",
+    pages: "7-12",
+    price: "$3,999",
+    description: "Enterprise solution for complex business needs",
+    features: [
+      "7-12 Custom Pages with Custom Design",
+      "Full AI Automation Suite",
+      "Advanced Analytics Dashboard",
+      "Multi-Channel Lead Management",
+      "CRM Integration",
+      "Automated Workflow Automation",
+      "Email, WhatsApp, SMS Integration",
+      "Unlimited Revisions",
+      "3 Months Dedicated Support",
+      "Monthly Performance Reports",
+      "4-5 Weeks Delivery",
+    ],
+    cta: "Get Started",
+  },
+]
+
+export const PRICING_NOTES = [
+  {
+    title: "AI Usage & Complexity",
+    description: "Advanced AI integrations, custom model training, and complex automations may incur additional fees.",
+  },
+  {
+    title: "Custom Features",
+    description: "Unique integrations, third-party APIs, and specialized functionality beyond standard offerings.",
+  },
+  {
+    title: "Scope Changes",
+    description: "Additional revisions, pages, or features requested during development.",
+  },
+  {
+    title: "Implementation Complexity",
+    description: "Your business requirements, existing systems, and integration difficulty.",
+  },
+]
