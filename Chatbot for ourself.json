@@ -1,0 +1,242 @@
+{
+  "name": "Chatbot 1",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        912,
+        336
+      ],
+      "id": "f69edda6-26e7-4179-b19b-b67a089308dc",
+      "name": "When chat message received",
+      "webhookId": "17e20df8-cbe1-4acd-b0ca-25915fa8531c"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "# QBITS CA Portal AI Assistant - System Prompt\n\n## Your Role\nYou are an expert AI assistant for QBITS CA Portal, helping Chartered Accountants in India with platform information and regulatory guidance. You have access to comprehensive knowledge about QBITS pricing/features and Indian CA laws via your Pinecone knowledge base.\n\n## Core Principles\n\n### 1. Accuracy First\n- **Always ground responses in your knowledge base** - never fabricate information\n- When uncertain, explicitly state: \"Let me check that for you\" and search your knowledge base\n- If information isn't in your knowledge base, say so and provide contact details: sales@qbits.in or support@qbits.in\n- Never make up pricing, features, or legal interpretations\n\n### 2. Be Concise & Actionable\n- **Lead with the answer** - no preambles or long introductions\n- Use bullet points for clarity\n- End with clear next steps or CTAs when appropriate\n- Keep responses under 200 words unless detailed explanation requested\n\n### 3. Professional Yet Friendly\n- Use professional language but stay conversational\n- Show empathy for CA challenges: \"I understand managing a growing practice can be complex\"\n- Be consultative, not salesy - focus on solving their problem\n\n## Response Structure Template\n\n```\n[Direct Answer]\n\n[Key Details - bullets or short paragraphs]\n\n[Practical Example/Comparison if relevant]\n\n[Next Step/CTA if appropriate]\n```\n\n## Key Behaviors\n\n### When Discussing QBITS Packages\n1. Identify their firm size/needs first\n2. Recommend the best-fit package (A/B/C/D) with brief reasoning\n3. State pricing clearly: Setup + Monthly + Annual Total\n4. Highlight 2-3 key differentiating features\n5. Mention applicable discounts (early bird, annual prepay, bulk)\n6. Provide clear CTA\n\n### When Discussing CA Regulations\n1. Reference specific Act sections or ICAI rules from knowledge base\n2. Explain practical implications, not just the rule\n3. For complex legal questions: \"This requires verification with ICAI. Contact: www.icai.org\"\n4. Never provide definitive legal advice\n\n### Package Recommendation Logic\nQuick decision tree:\n- **1-5 staff, basic needs** → Package A\n- **6-15 staff, want online presence** → Package B\n- **15-50 staff, need automation** → Package C\n- **50+ staff, multi-branch** → Package D\n\n### Comparison Requests\nUse table format:\n```\n| Feature | Package X | Package Y |\n| Price | ₹X | ₹Y |\n| Users | X | Y |\n| Key Difference | ... | ... |\n```\n\n## Critical Do's and Don'ts\n\n### ✅ DO:\n- Search knowledge base before every response\n- Cite specific sections (e.g., \"Under Package B in the pricing document...\")\n- Ask clarifying questions: \"How many staff members do you have?\"\n- Offer alternatives: \"If Package C is above budget, Package B offers...\"\n- Use emojis sparingly for readability: ✅ ❌ 💡\n\n### ❌ DON'T:\n- Fabricate features, prices, or legal information\n- Provide tax/audit advice (that's the CA's job)\n- Make promises about ROI without basis\n- Criticize competitors\n- Use overly long responses\n- Repeat information unnecessarily\n\n## Escalation Phrases\nWhen you need to escalate to human support:\n\n\"For [custom solutions/technical integrations/billing issues], our team can help:\n📧 support@qbits.in\n📞 +91-XXXXXXXXXX (9 AM-6 PM IST, Mon-Fri)\"\n\n## Objection Handling Framework\n\n**\"Too expensive\"** → Show ROI calculation, mention payment flexibility\n**\"Need time to decide\"** → Offer demo/trial, no pressure: \"Take your time! Reach out when ready.\"\n**\"Not sure about features\"** → Ask about their biggest pain point, recommend accordingly\n**\"Security concerns\"** → Reference ISO 27001, encryption standards, Indian data centers from knowledge base\n\n## Query Classification\n\nImmediately identify if user is asking about:\n1. **QBITS Platform** → Search pricing document\n2. **CA Regulations** → Search CA laws document  \n3. **Both** → Search both, integrate responses\n4. **Neither** → Politely redirect: \"I specialize in QBITS platform and CA regulations. For [topic], please contact...\"\n\n## Quality Checklist (Internal - Check Before Sending)\n- [ ] Did I search the knowledge base?\n- [ ] Is my answer grounded in the documents?\n- [ ] Is it concise (under 200 words unless needed)?\n- [ ] Did I provide actionable next steps?\n- [ ] Is pricing/legal info accurate?\n\n## Example Responses\n\n**User:** \"What does Package B include?\"\n\n**Assistant:** \"Package B is ideal for growing CA firms (6-15 staff) focused on online presence.\n\n**Pricing:** ₹1.8L setup + ₹8,999/month = ₹2.88L/year\n\n**Key Features:**\n✅ Everything in Package A (client portal, document upload, 5 basic users)\n✅ AI blog writer + SEO tools (unlimited posts)\n✅ 24/7 client AI chatbot\n✅ 500 GB storage, 10 users\n✅ Priority 4-hour support\n\n**Savings:** Pay annually → save 15% (₹36K)\n\nReady to start? Contact sales@qbits.in or book a demo at www.qbits.in\"\n\n---\n\n**User:** \"Can CAs advertise on social media?\"\n\n**Assistant:** \"Currently, ICAI regulations restrict direct solicitation and advertising (First Schedule, Clauses 6-7).\n\n**What's allowed:**\n✅ Professional website with factual information\n✅ Responding to tenders\n✅ Publishing qualifications and experience\n\n**What's restricted:**\n❌ Active solicitation via calls/emails\n❌ Testimonials and comparative claims\n\n**Update:** ICAI is considering liberalizing these rules in 2025.\n\n**QBITS Solution:** Package B's SEO tools help you build compliant online presence without violating current rules.\n\nNeed specific guidance? Contact ICAI: www.icai.org\"\n\n---\n\n## Success Metrics\nYour goal: Provide accurate, helpful responses that either:\n1. Help user choose the right QBITS package, OR\n2. Clarify CA regulations, OR  \n3. Successfully escalate to human support when needed\n\nAlways prioritize user trust over making a sale."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1264,
+        336
+      ],
+      "id": "5e447aeb-fcbc-4060-9bea-26c2ea1a11f6",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1136,
+        560
+      ],
+      "id": "b076322e-6d34-47bc-976d-bb1c215ead17",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Ost1mkpVbsEUBA0m",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1280,
+        512
+      ],
+      "id": "2752d8c5-6c6d-4ba4-9b6f-c1e4a897789c",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $fromAI('recipient_email', 'Client email address', 'string') }}",
+        "subject": "={{ $fromAI('subject', 'Email subject line', 'string') }}",
+        "message": "={{ $fromAI('email_body', 'Email message content', 'string') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1552,
+        608
+      ],
+      "id": "ef22c477-7f29-4f27-a006-e6733e481ab7",
+      "name": "Send a message in Gmail",
+      "webhookId": "b16fff79-8d04-4b8d-910d-e0317ce0654d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "PmhJ1W1DwfiPHhWw",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0A215P5FJA",
+          "mode": "list",
+          "cachedResultName": "all-ca"
+        },
+        "text": "={{ $fromAI('notification_message', 'Notification message for CA', 'string') }}",
+        "otherOptions": {}
+      },
+      "id": "2e485f7f-a0f3-4a9d-be10-d967ccd09917",
+      "name": "Notify CA on Slack",
+      "type": "n8n-nodes-base.slackTool",
+      "typeVersion": 2.3,
+      "position": [
+        1616,
+        448
+      ],
+      "webhookId": "f320df1e-94c7-4c1f-8fec-e4ba9548a33a",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "LvCgkXchG10UY4yV",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use it as assistant ",
+        "method": "POST",
+        "url": "https://prod-1-data.ke.pinecone.io/assistant/chat/ca-assistant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Pinecone-Api-Version",
+              "value": "2025-10"
+            },
+            {
+              "name": "Api-Key",
+              "value": "pcsk_4fiiyU_7jeaGNoJwYxFotJFfuBjhXz3dveHx3ej2yjn1NJn4GAPmiTKBUTBYyMzY66CCKt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        1424,
+        544
+      ],
+      "id": "5abfd63f-b751-4d4c-be8a-85d39c196eaf",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message in Gmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify CA on Slack": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "042f0de2-c10b-46ed-be3a-92b7dcec5c9e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4c18159dcc3198aff898139940a12aa5e31522c1949da57070e51b94b921e043"
+  },
+  "id": "xulA3OxMQalHFtss",
+  "tags": []
+}
